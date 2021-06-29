@@ -9,10 +9,23 @@
 <body>
     <h1>Année Bissextile</h1>
     <form name="myform"action="" method="get">
-        <INPUT TYPE="text" NAME="inputbox" VALUE=""><P>
+        <INPUT TYPE="number" NAME="inputbox" VALUE=""><P>
         <input id="myButton" type="button" value="Click" onclick="getData(this.form)">
     </form>
     <p id="reponse" hidden='true'>L'année est bissextile<p>
+    <h1>Cotation d'un eleve</h1>
+    <form name="myform"action="" method="get">
+        <INPUT TYPE="number" NAME="cotationbox" VALUE=""><P>
+        <input id="myButton1" type="button" value="Click" onclick="getCotation(this.form)">
+    </form>
+    <p value="" id="cote">Le resultat est...</p>
+    <h1>Gestion de date</h1>
+
+        <INPUT TYPE="date" id="datebox" VALUE=""><P>
+        <input type="button" id="submit" onclick="AfficherJour()" value= "Click">
+
+    <p id="jour">Le jour de la semaine correspondant a cette date est ...</p>
+    
     
 </body>
 </html>
