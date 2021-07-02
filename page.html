@@ -37,7 +37,27 @@
         <p id ="biggestDepense">Plus grosse dépense: 0</p>
         <p id = "depenseMoyenne">Dépenses Moyennes: 0</p>
     </div>
-    
+    <h1>Encodage de score</h1>
+    <h2>Add Player</h2>
+    <form name="myform"action="" method="get">
+        <INPUT TYPE="text" id="player" VALUE=""><P>
+        <input id="buttonAddPlayer" type="button" value="Click" onclick="createPlayer()">
+    </form>
+    <div id = "scores" hidden = true>
+        <h2>Add score</h2>
+        <label for="pet-select">Choose a Player:</label>
+        <select name="players" id="player_select" onchange="showFormulaire()">
+            <option value="">--Please choose an option--</option>
+
+        </select>
+    <div id = "player_score" hidden = true>
+        <form name="myform"action="" method="get">
+            <label>Score: </label>
+            <INPUT TYPE="number" id="score_of_player" VALUE=""><P>
+            <input id="buttonAddScore" type="button" value="Click" onclick="addScore()">
+        </form>
+    </div>
+    </div>
     
 </body>
 </html>

@@ -92,4 +92,41 @@ function setDepense(){
     document.getElementById("depenseMoyenne").innerHTML="Dépenses Moyennes: "+ depenseMoyenne
     console.log(depenses)
 }
+const player = {
+    score: 0,
+    name: "",
+    printIntroduction: function() {
+      console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+    }
+  };
+let players=[]
+function createPlayer() {
+    const newPlayer = Object.create(player)
+    newPlayer.name = document.getElementById("player").value
+    newPlayer.score = 0
+    players.push(newPlayer)
+    console.log(players)
+    document.getElementById("scores").hidden = false;
+    let newOption = document.createElement('option')
+    newOption.appendChild(document.createTextNode(newPlayer.name))
+    newOption.value = newPlayer.name
+    document.getElementById("player_select").appendChild(newOption)
+}
+function showFormulaire() {
+    if(document.getElementById("player_select").selectedIndex == 0){
+        document.getElementById("player_score").hidden = true
+    }else{
+        document.getElementById("player_score").hidden = false
+    }
+}
+function addScore() {
+    let score = document.getElementById("score_of_player").value
+    players.forEach(function(item,index) {
+       if(player[index].name == document.getElementById("player_select").selectedIndex.value){
+            player[index].score+= score
+       }
+        
+      })
+}
+
 
