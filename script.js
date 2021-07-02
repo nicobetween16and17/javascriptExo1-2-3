@@ -111,6 +111,7 @@ function createPlayer() {
     newOption.appendChild(document.createTextNode(newPlayer.name))
     newOption.value = newPlayer.name
     document.getElementById("player_select").appendChild(newOption)
+    document.getElementById("player").value= null
 }
 function showFormulaire() {
     if(document.getElementById("player_select").selectedIndex == 0){
@@ -125,12 +126,24 @@ function addScore() {
     console.log(document.getElementById("player_select").value)
     players.forEach(function(item,index) {
         console.log(item.name)
-       if(item.name == document.getElementById("player_select").value){
-           
+       if(item.name == document.getElementById("player_select").value){ 
             item.score+= Number(score)
        }
         
       })
+      updateHS()
+}
+function updateHS() {
+    let highestScore = 0
+let bestPlayer =""
+players.forEach(function(item,index) {
+    if(item.score>highestScore){
+        highestScore = item.score
+        bestPlayer = item.name
+    }
+})
+document.getElementById("bestPlayer").innerHTML ="Le Meilleur joueur est: " +bestPlayer
+document.getElementById("HS").innerHTML = "Avec le score de: "+highestScore
 }
 
 
