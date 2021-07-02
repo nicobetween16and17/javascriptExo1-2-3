@@ -58,3 +58,38 @@ function getCotation(cotation) {
     }
     cotation.cotationbox.value = null
 }
+let budgetglobal
+let budgetRestant
+function setBudget(){
+    let budget = document.getElementById("budget").value
+    console.log(budget)
+    document.getElementById("gestionBudget").hidden = false;
+    document.getElementById("budgetRestant").innerHTML+=" "+ budget
+    budgetglobal = budget
+    budgetRestant = budget
+}
+let depenses = []
+let depenseMoyenne = 0
+let plusGrosseDepense = 0
+
+function setDepense(){
+    let newDepense = document.getElementById("dépense").value
+    depenses.push(newDepense)
+    document.getElementById("dépense").value=null
+    depenses.forEach(function(item,index) {
+        console.log(depenseMoyenne+60);
+        depenseMoyenne+=Number(depenses[index])
+      })
+      console.log(depenseMoyenne+" ,"+ depenses.length)
+    depenseMoyenne = depenseMoyenne/depenses.length
+    if(newDepense>plusGrosseDepense){
+        plusGrosseDepense = newDepense
+    }
+    console.log(plusGrosseDepense)
+    budgetRestant -= newDepense
+    document.getElementById("budgetRestant").innerHTML="Budget restant: "+budgetRestant
+    document.getElementById("biggestDepense").innerHTML="Plus grosse dépense: "+plusGrosseDepense
+    document.getElementById("depenseMoyenne").innerHTML="Dépenses Moyennes: "+ depenseMoyenne
+    console.log(depenses)
+}
+

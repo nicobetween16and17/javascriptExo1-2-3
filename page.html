@@ -25,6 +25,18 @@
         <input type="button" id="submit" onclick="AfficherJour()" value= "Click">
 
     <p id="jour">Le jour de la semaine correspondant a cette date est ...</p>
+    <h1>Gestion de dépense</h1>
+    <INPUT TYPE="number" id="budget" VALUE="" required="true"><P>
+    <input id="myButtonBudget" type="button" value="Click" onclick="setBudget()">
+    <div id="gestionBudget" hidden="true">
+        <form name="myform"action="" method="get">
+            <INPUT TYPE="number" id="dépense" VALUE=""><P>
+            <input id="myButtonDepense" type="button" value="Click" onclick="setDepense()">
+        </form>
+        <p id = "budgetRestant">Budget restant: </p>
+        <p id ="biggestDepense">Plus grosse dépense: 0</p>
+        <p id = "depenseMoyenne">Dépenses Moyennes: 0</p>
+    </div>
     
     
 </body>
