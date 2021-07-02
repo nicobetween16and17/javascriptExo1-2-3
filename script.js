@@ -92,7 +92,7 @@ function setDepense(){
     document.getElementById("depenseMoyenne").innerHTML="Dépenses Moyennes: "+ depenseMoyenne
     console.log(depenses)
 }
-const player = {
+let player = {
     score: 0,
     name: "",
     printIntroduction: function() {
@@ -121,9 +121,13 @@ function showFormulaire() {
 }
 function addScore() {
     let score = document.getElementById("score_of_player").value
+    console.log(score)
+    console.log(document.getElementById("player_select").value)
     players.forEach(function(item,index) {
-       if(player[index].name == document.getElementById("player_select").selectedIndex.value){
-            player[index].score+= score
+        console.log(item.name)
+       if(item.name == document.getElementById("player_select").value){
+           
+            item.score+= Number(score)
        }
         
       })
