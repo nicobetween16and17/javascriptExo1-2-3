@@ -1,17 +1,17 @@
 function getData(form) {
     let formulaire = form.inputbox.value;
     console.log(formulaire)
-    let isbiss = (formulaire % 4 == 0 && formulaire %100 != 0) || formulaire%400 ==0
+    let isbiss = (formulaire % 4 == 0 && formulaire % 100 != 0) || formulaire % 400 == 0
     document.getElementById('reponse').hidden = !isbiss
 }
 
-function AfficherJour(){
+function AfficherJour() {
     let date = new Date(document.getElementById('datebox').value);
     console.log(date)
     let dayOfMonth = date.getDay();
     console.log(dayOfMonth)
     let jour = document.getElementById('jour')
-    switch(dayOfMonth){
+    switch (dayOfMonth) {
         case 0:
             jour.innerHTML = "Le jour de la semaine correspondant a cette date est ... Dimanche"
             break;
@@ -32,27 +32,27 @@ function AfficherJour(){
             break;
         case 6:
             jour.innerHTML = "Le jour de la semaine correspondant a cette date est ... Samedi"
-            break;    
+            break;
     }
 }
 function getCotation(cotation) {
     let LaCotation = cotation.cotationbox.value;
     let result = document.getElementById('cote')
-    switch(true){
-        case (LaCotation==20):
-            result.innerHTML="Le resultat est... Excellent"
+    switch (true) {
+        case (LaCotation == 20):
+            result.innerHTML = "Le resultat est... Excellent"
             break;
-        case (LaCotation>=17):
-            result.innerHTML="Le resultat est... Très Bien"
+        case (LaCotation >= 17):
+            result.innerHTML = "Le resultat est... Très Bien"
             break;
-        case (LaCotation>=14):
-            result.innerHTML="Le resultat est... Bien"
+        case (LaCotation >= 14):
+            result.innerHTML = "Le resultat est... Bien"
             break;
-        case (LaCotation>=10):
-            result.innerHTML="Le resultat est... Suffisant"
+        case (LaCotation >= 10):
+            result.innerHTML = "Le resultat est... Suffisant"
             break;
-        default: 
-            result.innerHTML="Le resultat est... Insuffisant"
+        default:
+            result.innerHTML = "Le resultat est... Insuffisant"
             break;
 
     }
@@ -60,11 +60,11 @@ function getCotation(cotation) {
 }
 let budgetglobal
 let budgetRestant
-function setBudget(){
+function setBudget() {
     let budget = document.getElementById("budget").value
     console.log(budget)
     document.getElementById("gestionBudget").hidden = false;
-    document.getElementById("budgetRestant").innerHTML+=" "+ budget
+    document.getElementById("budgetRestant").innerHTML += " " + budget
     budgetglobal = budget
     budgetRestant = budget
 }
@@ -72,34 +72,34 @@ let depenses = []
 let depenseMoyenne = 0
 let plusGrosseDepense = 0
 
-function setDepense(){
+function setDepense() {
     let newDepense = document.getElementById("dépense").value
     depenses.push(newDepense)
-    document.getElementById("dépense").value=null
-    depenses.forEach(function(item,index) {
-        console.log(depenseMoyenne+60);
-        depenseMoyenne+=Number(depenses[index])
-      })
-      console.log(depenseMoyenne+" ,"+ depenses.length)
-    depenseMoyenne = depenseMoyenne/depenses.length
-    if(newDepense>plusGrosseDepense){
+    document.getElementById("dépense").value = null
+    depenses.forEach(function (item, index) {
+        console.log(depenseMoyenne + 60);
+        depenseMoyenne += Number(depenses[index])
+    })
+    console.log(depenseMoyenne + " ," + depenses.length)
+    depenseMoyenne = depenseMoyenne / depenses.length
+    if (newDepense > plusGrosseDepense) {
         plusGrosseDepense = newDepense
     }
     console.log(plusGrosseDepense)
     budgetRestant -= newDepense
-    document.getElementById("budgetRestant").innerHTML="Budget restant: "+budgetRestant
-    document.getElementById("biggestDepense").innerHTML="Plus grosse dépense: "+plusGrosseDepense
-    document.getElementById("depenseMoyenne").innerHTML="Dépenses Moyennes: "+ depenseMoyenne
+    document.getElementById("budgetRestant").innerHTML = "Budget restant: " + budgetRestant
+    document.getElementById("biggestDepense").innerHTML = "Plus grosse dépense: " + plusGrosseDepense
+    document.getElementById("depenseMoyenne").innerHTML = "Dépenses Moyennes: " + depenseMoyenne
     console.log(depenses)
 }
 let player = {
     score: 0,
     name: "",
-    printIntroduction: function() {
-      console.log(`My name is ${this.name}. Am I human? ${this.isHuman}`);
+    printIntroduction: function () {
+        console.log(`My name is ${this.name}. Am I good? score: ${this.score} ...non pas encore`);
     }
-  };
-let players=[]
+};
+let players = []
 function createPlayer() {
     const newPlayer = Object.create(player)
     newPlayer.name = document.getElementById("player").value
@@ -111,12 +111,12 @@ function createPlayer() {
     newOption.appendChild(document.createTextNode(newPlayer.name))
     newOption.value = newPlayer.name
     document.getElementById("player_select").appendChild(newOption)
-    document.getElementById("player").value= null
+    document.getElementById("player").value = null
 }
 function showFormulaire() {
-    if(document.getElementById("player_select").selectedIndex == 0){
+    if (document.getElementById("player_select").selectedIndex == 0) {
         document.getElementById("player_score").hidden = true
-    }else{
+    } else {
         document.getElementById("player_score").hidden = false
     }
 }
@@ -124,26 +124,26 @@ function addScore() {
     let score = document.getElementById("score_of_player").value
     console.log(score)
     console.log(document.getElementById("player_select").value)
-    players.forEach(function(item,index) {
+    players.forEach(function (item, index) {
         console.log(item.name)
-       if(item.name == document.getElementById("player_select").value){ 
-            item.score+= Number(score)
-       }
-        
-      })
-      updateHS()
+        if (item.name == document.getElementById("player_select").value) {
+            item.score += Number(score)
+        }
+
+    })
+    updateHS()
 }
 function updateHS() {
     let highestScore = 0
-let bestPlayer =""
-players.forEach(function(item,index) {
-    if(item.score>highestScore){
-        highestScore = item.score
-        bestPlayer = item.name
-    }
-})
-document.getElementById("bestPlayer").innerHTML ="Le Meilleur joueur est: " +bestPlayer
-document.getElementById("HS").innerHTML = "Avec le score de: "+highestScore
+    let bestPlayer = ""
+    players.forEach(function (item, index) {
+        if (item.score > highestScore) {
+            highestScore = item.score
+            bestPlayer = item.name
+        }
+    })
+    document.getElementById("bestPlayer").innerHTML = "Le Meilleur joueur est: " + bestPlayer
+    document.getElementById("HS").innerHTML = "Avec le score de: " + highestScore
 }
 
 
